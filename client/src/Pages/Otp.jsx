@@ -41,7 +41,8 @@ export default function Otp() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-800 to-violet-500">
+    <div className="min-h-screen flex items-center justify-center 
+    bg-gradient-to-r from-indigo-800 to-violet-500">
       <div className="max-w-md w-full p-6 bg-white shadow-md rounded-md">
         <h2 className="text-2xl font-semibold mb-6 font-serif"> Login with AdharCardNumber</h2>
         <form>

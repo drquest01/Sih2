@@ -8,20 +8,29 @@ import Footer from "../Components/Footer";
 import slider5 from '../assets/slider5.jpg';
 
 
+
 export default function Home() {
   //cards for info
 
   const Card = ({ image, title, description }) => {
     return (
-      <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4 justify-center transition-transform transform-gpu hover:scale-110 ">
+      <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4  justify-center transition-transform transform-gpu hover:scale-110 ">
         <div
-          className="bg-cover bg-center h-64"
+          className="bg-cover bg-center rounded-lg h-64"
           style={{ backgroundImage: `url(${image})` }}
         ></div>
         <div className="mt-4">
           <h2 className="text-xl font-bold text-yellow-600">{title}</h2>
           <p className="text-gray-700">{description}</p>
         </div>
+      </div>
+    );
+  };
+  const Notice = ({ title, content }) => {
+    return (
+      <div className="bg-gray-200 p-4 rounded-md mb-4">
+        <h2 className="text-lg font-semibold mb-2">{title}</h2>
+        <p>{content}</p>
       </div>
     );
   };
@@ -129,7 +138,7 @@ export default function Home() {
             <div
               className="max-w-sm w-full lg:max-w-xs 
                hover:border-transparent 
-      shadow-md rounded-md overflow-hidden mt-4  hover:translate-y-2.5 bg-cover bg-center hover:scale-110 "
+      shadow-md rounded-lg overflow-hidden mt-4  hover:translate-y-2.5 bg-cover bg-center hover:scale-110 "
       style={{ backgroundImage: "url('https://img.freepik.com/free-photo/graduation-cap-sits-top-stack-books_188544-38727.jpg')" } }  >
               <Link to={"/Scholarship"}>
               <div className="px-10 py-8">
@@ -147,7 +156,7 @@ export default function Home() {
             <div
               className="max-w-sm w-full lg:max-w-xs 
               hover:border-transparent 
-     shadow-md rounded-md overflow-hidden mt-4  hover:translate-y-2.5 bg-cover bg-center hover:scale-105"
+     shadow-md rounded-lg overflow-hidden mt-4  hover:translate-y-2.5 bg-cover bg-center hover:scale-105"
       style={{ backgroundImage: "url('https://png.pngtree.com/thumb_back/fw800/background/20230628/pngtree-globe-trotting-in-3d-exploring-the-world-by-airplane-image_3687653.jpg')" } }  > 
               <div className="px-10 py-8">
                 <div className="font-bold text-2xl mb-2 text-center backdrop-blur-sm">
@@ -200,6 +209,13 @@ export default function Home() {
           </li>
         ))}
       </ul>
+    </div>
+
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Notice Board</h1>
+      <Notice title="Important Notice" content="This is an important announcement." />
+      <Notice title="Event Reminder" content="Don't forget about our upcoming event on Saturday." />
+      {/* Add more notices as needed */}
     </div>
     <Footer/>
       </>

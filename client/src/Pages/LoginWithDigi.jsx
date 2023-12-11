@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react' // Login with digilocker
+import { useState } from "react";
 
-export default function Student() {
+import {  useNavigate  } from "react-router-dom";
+
+export default function LoginWithDigi() {
   const [AdharNumber, setAadharNumber] = useState("");
   const navigate = useNavigate();
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents the form from submitting
 
@@ -14,8 +16,8 @@ export default function Student() {
       return;
     }
 
-    let res = await fetch(
-      "https://sih-backend-ivory.vercel.app/api/v1/Users/OtpSend",
+    let result = await fetch(
+      "https://sih-backend-ivory.vercel.app/api/v1/Users/digilocker/OtpSend",
       {
         method: "POST",
         body: JSON.stringify({ AdharNumber }),
@@ -25,14 +27,13 @@ export default function Student() {
       }
     );
 
-    const data = await res.json();
-    localStorage.setItem("otp", data.otp);
-    console.log(data);
+    const data2 = await result.json();
+    localStorage.setItem("otpdigi", data2.otp);
+    console.log(data2);
 
-    // Navigate to Otp page only if AdharNumber is not empty
-    navigate("/Otp");
+    
+    navigate("/Loginopt");
   };
-
   return (
     <div className="bg-gradient-to-r from-indigo-800 to-violet-500 min-h-screen py-40">
       <div className="container mx-auto">
@@ -45,8 +46,8 @@ export default function Student() {
             />
           </div>
           <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden mt-5">
-            <h2 className="text-2xl mb-4 uppercase font-semibold font-mono text-red-700">
-              Register with Adharcard Number
+            <h2 className="text-3xl mb-4 uppercase font-semibold font-mono text-blue-700">
+              Register with digilocker:
             </h2>
             <p className="mb-4 font-noral">
               Create your account. It's free and only takes a minute.
@@ -63,34 +64,23 @@ export default function Student() {
                 <input
                   type="text"
                   id="aadharNumber"
-                  className="w-full p-2 border rounded-lg"
+                  className="w-full p-2 border rounded-lg mt-3"
                   placeholder="Enter Aadhar Card Number"
                   value={AdharNumber}
                   onChange={(e) => setAadharNumber(e.target.value)}
                   required
                 />
+                
                 <button
                   onClick={handleSubmit}
                   type="submit"
-                  className="bg-blue-500 text-white p-1 rounded-md mt-2 hover:bg-blue-600 mb-3"
+                  className="bg-red-500 text-white p-2  rounded-md mt-3 ml-4 mb-3 hover:scale-110"
                   disabled={!AdharNumber.trim()} // Disable button if AdharNumber is empty
                 >
                   Send OTP
                 </button>
-              
+                
               </div>
-
-              <Link to={"/LoginWithDigi"}>
-              <button
-                  type="submit"
-                  className="bg-red-500 text-white p-2 rounded-md hover:bg-blue-600 mb-3 w-full"
-                >
-                  With DigiLocker
-                </button>
-                
-                </Link>
-                
-              
             </form>
           </div>
         </div>

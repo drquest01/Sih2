@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaSearch } from 'react-icons/fa';
-import logo from '../assets/logo.png'
+
 
 
 export default function Header() {
@@ -10,8 +10,8 @@ export default function Header() {
     <header className='bg-gradient-to-r from-indigo-800 to-violet-500 '>
     <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
       <Link to='/'>
-      <img src={logo} alt="Logo" className="h-10 " />
-      <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
+      
+      <h1 className='font-bold text-sm sm:text-2xl flex flex-wrap'>
             <span className='text-slate-200 font-mono'>Vita</span>
             <span className='text-yellow-500 font-serif'>ran</span>
           </h1>
